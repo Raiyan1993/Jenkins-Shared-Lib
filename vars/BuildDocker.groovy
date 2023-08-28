@@ -1,7 +1,6 @@
-def call(DockerHubUser, AppName, ImageTag) {
+def call(DockerHubUser, AppName, dockerImageTag) {
     sh """
-    docker build -t $DockerHubUser/$AppName:$ImageTag .
-    docker tag -t $DockerHubUser/$AppName:$ImageTag $DockerHubUser/$AppName:latest
+    docker build -t $DockerHubUser/$AppName:$dockerImageTag .
+    docker tag -t $DockerHubUser/$AppName:$dockerImageTag $DockerHubUser/$AppName:latest
     """
-
 }

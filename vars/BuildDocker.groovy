@@ -5,7 +5,7 @@
 //     """
 // }
 
-def call(aws_account_id, ecr-repoName, region) {
+def call(aws_account_id, ecr-repoName, dockerImageTag, region) {
     sh """
     docker build -t ${ecr-repoName}:${dockerImageTag} .
     docker tag ${ecr-repoName}:${dockerImageTag} ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${ecr-repoName}:${dockerImageTag}

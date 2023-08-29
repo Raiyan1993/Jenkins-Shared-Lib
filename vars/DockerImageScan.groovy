@@ -7,7 +7,7 @@
 
 def call(aws_account_id, repoName, dockerImageTag, region) {
     sh """
-    trivy ${repoName}:${dockerImageTag} ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${repoName}:${dockerImageTag} > scan.txt
+    trivy image ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${repoName}:${dockerImageTag} > scan.txt
     cat scan.txt
     """
 }

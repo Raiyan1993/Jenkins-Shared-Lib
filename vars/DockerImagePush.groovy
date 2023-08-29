@@ -7,8 +7,8 @@ def call(DockerHubUser, AppName, dockerImageTag) {
 
         sh """
         docker login -u '$USER' -p '$PASS'
-        docker push image $DockerHubUser/$AppName:v$dockerImageTag
-        docker push image $DockerHubUser/$AppName:latest
+        docker push $DockerHubUser/$AppName:v$dockerImageTag
+        docker push $DockerHubUser/$AppName:latest
         """
         }
 }

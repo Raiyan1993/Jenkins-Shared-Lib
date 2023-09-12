@@ -19,6 +19,7 @@ def call(aws_account_id, repoName, dockerImageTag, region) {
 
         sh """
         aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${aws_account_id}.dkr.ecr.${region}.amazonaws.com
+        aws ecr create-repository --repository-name ${repoName} --image-scanning-configuration scanOnPush=true
         docker push ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${repoName}:${dockerImageTag}
         docker push ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${repoName}
         """                   
